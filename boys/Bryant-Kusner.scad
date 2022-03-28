@@ -38,69 +38,72 @@ function z(u,v) = [
 ];
 
 function cboys(z) = [
-    100*g1(z)/g(z),
-    100*g2(z)/g(z),
-    100*g3(z)/g(z)
+    30*g1(z)/g(z),
+    30*g2(z)/g(z),
+    30*g3(z)/g(z)
 ];
 
 function boys(u,v) = cboys(z(u,v));
 
-ustep = 0.05;
-vstep = 18;
-
-for(u=[0:ustep:1]) {
-    for(v=[0:vstep:360]) {
-        hull() {
-            translate(boys(u,v))
-            sphere(1, $fn=10);
-            translate(boys(u+ustep,v))
-            sphere(1, $fn=10);
-            
-            translate(boys(u,v+vstep/4))
-            sphere(1, $fn=10);
-            translate(boys(u+ustep,v+vstep/4))
-            sphere(1, $fn=10);
-        }
+module section(from,to) {
+    intersection() {
+        translate([-50,-50,from])
+        cube([100,100,to-from]);
+        model();
     }
 }
 
-ustep2 = 0.1;
-vstep2 = 4.5;
+translate([cos(-120)*50,sin(-120)*50,12])
+color("DeepPink")
+section(-12,20);
+translate([cos(120)*50,sin(120)*50,30])
+color("White")
+section(-30,-12);
+color("DarkBlue")
+translate([50,0,61.5])
+section(-61.5,-30);
 
-for(u=[0:ustep2:1]) {
-    for(v=[0:vstep2:360]) {
-        
-        hull() {
-            translate(boys(u,v))
-            sphere(2, $fn=10);
-            translate(boys(u,v+vstep2))
-            sphere(2, $fn=10);
-        }
-    }
+module model() {
+    strips(0,1);
+    lines(0,1);
+    translate([0,0,-61.5])
+    cylinder(6,18,16.5);
 }
-/*
-for(u=[0:0.1:1]) {
-    for(v=[0:36:360]) {
-        hull() {
-            translate(boys(u,v))
-            sphere(0.01, $fn=10);
-            translate(boys(i+10,j))
-            sphere(0.01, $fn=10);
-        }
-        
-        hull() {
-            translate(boys(i,j))
-            sphere(0.01, $fn=10);
-            translate(boys(i+2,j))
-            sphere(0.01, $fn=10);
-            if(i%20==0) {
-                translate(boys(i,j+5))
-                sphere(0.01, $fn=10);
-                translate(boys(i+2,j+5))
-                sphere(0.01, $fn=10);
+
+module strips(uf, ut) {
+    ustep = 0.05;
+    vstep = 18;
+    
+    for(u=[uf:ustep:ut]) {
+        for(v=[0:vstep:360]) {
+            hull() {
+                translate(boys(u,v))
+                sphere(1, $fn=10);
+                translate(boys(u+ustep,v))
+                sphere(1, $fn=10);
+                
+                translate(boys(u,v+vstep/8))
+                sphere(1, $fn=10);
+                translate(boys(u+ustep,v+vstep/8))
+                sphere(1, $fn=10);
             }
         }
-        
     }
 }
-*/
+
+module lines(uf,ut) {
+    ustep = 0.1;
+    vstep = 2;
+
+    for(u=[uf:ustep:ut]) {
+        for(v=[0:vstep:360]) {
+            
+            hull() {
+                translate(boys(u,v))
+                sphere(1.1, $fn=10);
+                translate(boys(u,v+vstep))
+                sphere(1.1, $fn=10);
+            }
+        }
+    }
+}

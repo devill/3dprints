@@ -1,0 +1,1 @@
+import("~/git/3dprintmodels/hungary-political-party-fidesz-seeklogo.com.stl")
