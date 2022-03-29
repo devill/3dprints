@@ -53,15 +53,19 @@ module section(from,to) {
     }
 }
 
+/*
 translate([cos(-120)*50,sin(-120)*50,12])
-color("DeepPink")
 section(-12,20);
-translate([cos(120)*50,sin(120)*50,30])
-color("White")
+*/
+//translate([cos(120)*50,sin(120)*50,30])
 section(-30,-12);
-color("DarkBlue")
+/*
 translate([50,0,61.5])
 section(-61.5,-30);
+*/
+
+//strips(0,1);
+//lines(0,1);
 
 module model() {
     strips(0,1);
