@@ -53,16 +53,18 @@ module section(from,to) {
     }
 }
 
-/*
-translate([cos(-120)*50,sin(-120)*50,12])
+
+//translate([cos(-120)*50,sin(-120)*50,12])
 section(-12,20);
-*/
+
 //translate([cos(120)*50,sin(120)*50,30])
-section(-30,-12);
-/*
-translate([50,0,61.5])
-section(-61.5,-30);
-*/
+//section(-30,-12);
+
+//translate([50,0,61.5])
+//section(-61.5,-30);
+
+
+//section(-61.5,20);
 
 //strips(0,1);
 //lines(0,1);
