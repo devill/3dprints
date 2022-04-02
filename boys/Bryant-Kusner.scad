@@ -53,18 +53,26 @@ module section(from,to) {
     }
 }
 
+module solid_section(from,to) {
+    intersection() {
+        translate([-50,-50,from])
+        cube([100,100,to-from]);
+        solid(0.5,1);
+    }
+}
+
+
+model();
 
 //translate([cos(-120)*50,sin(-120)*50,12])
-section(-12,20);
+//section(-1,20);
 
 //translate([cos(120)*50,sin(120)*50,30])
-//section(-30,-12);
+//section(-29,-1);
+
 
 //translate([50,0,61.5])
-//section(-61.5,-30);
-
-
-//section(-61.5,20);
+//section(-61.5,-29);
 
 //strips(0,1);
 //lines(0,1);
@@ -72,8 +80,31 @@ section(-12,20);
 module model() {
     strips(0,1);
     lines(0,1);
+    solid(0.3,0.35);
+    solid_section(-3,1);
     translate([0,0,-61.5])
     cylinder(6,18,16.5);
+}
+
+module solid(uf, ut) {
+    ustep = 0.05;
+    vstep = 2;
+    
+    for(u=[uf:ustep:ut]) {
+        for(v=[0:vstep:360]) {
+            hull() {
+                translate(boys(u,v))
+                sphere(1, $fn=10);
+                translate(boys(u+ustep,v))
+                sphere(1, $fn=10);
+                
+                translate(boys(u,v+vstep))
+                sphere(1, $fn=10);
+                translate(boys(u+ustep,v+vstep))
+                sphere(1, $fn=10);
+            }
+        }
+    }
 }
 
 module strips(uf, ut) {
