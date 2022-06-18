@@ -2,8 +2,8 @@ use<polygear/shortcuts.scad>
 
 
 r_neck = 500/6;
-r_cover = r_neck + 40;
-r_base = r_neck + 80;
+r_cover = r_neck + 25;
+r_base = r_neck + 50;
 r_cavity = r_neck*0.7;
 
 h_base = 5;
@@ -67,21 +67,16 @@ color("white") {
 }
 
 
-/*color("black") {
-    U() {
-        Tz(h_neck) {
-            cylinder(h=h_base, r1=r_cover, r2=r_cover, $fn=6);
-
-        }
+!color("black") {
+    Tz(h_neck+h_base) {
+        cylinder(h=h_base, r1=r_cover, r2=r_cover, $fn=6);
 
     }
-}*/
 
-U(){
-    Tz(h_neck-1)
+    Tz(h_neck)
     D() {
         
-        cylinder(h=h_base, r1=r_cavity, r2=r_cavity-3, $fn=100);
+        cylinder(h=h_base, r1=r_cavity-0.3, r2=r_cavity-3.3, $fn=100);
         for(d = [0:120:360]) {
             Rz(d+60)
             D() {
@@ -92,5 +87,14 @@ U(){
             }
         }
         cylinder(h=h_base, r1=r_cavity-10, r2=r_cavity-10, $fn=100);
+        Tz(-h_neck)
+        for(d = [0:120:360]) {
+            Rz(d)
+            Tz(h_base)
+            Ty(r_cavity-30)
+            Tx(-0.5)
+            cube([4,30,h_neck]);
+        }
     }
 }
+
