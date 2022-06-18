@@ -9,7 +9,7 @@ r_cavity = r_neck*0.7;
 h_base = 5;
 h_neck = 20;
 
-color("white") {
+!color("white") {
     D() {
         U() {
             cylinder(h=h_neck+h_base, r1=r_neck, r2=r_neck, $fn=6);
@@ -51,10 +51,10 @@ color("white") {
             Rz(d) 
             Tx(r_cavity - 12) {
                 
-                cylinder(h=h_base, r1=5, r2=5,  $fn=100);
+                cylinder(h=h_base, r1=2.5, r2=2.5,  $fn=100);
                 
                 Tz(h_base-2)
-                cylinder(h=2, r1=5, r2=10,  $fn=100);
+                cylinder(h=2, r1=2.5, r2=5,  $fn=100);
             }
         }
     }
@@ -67,7 +67,7 @@ color("white") {
 }
 
 
-!color("black") {
+color("black") {
     Tz(h_neck+h_base) {
         cylinder(h=h_base, r1=r_cover, r2=r_cover, $fn=6);
 
