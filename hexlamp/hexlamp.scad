@@ -14,6 +14,7 @@ h_neck = 20;
         U() {
             cylinder(h=h_neck+h_base, r1=r_neck, r2=r_neck, $fn=6);
             cylinder(h=h_base, r1=r_base, r2=r_base, $fn=6);
+            cylinder(h=h_neck+h_base-12, r1=r_neck+1, r2=r_neck+1, $fn=6);
         }
         
         D() {
@@ -40,7 +41,7 @@ h_neck = 20;
         }
         Tz(h_base)
         Ty(-2.5)
-        cube([r_neck+5, 5, 5]);
+        cube([r_neck+5, 5, 10]);
         Tx(r_neck-2)
         Tz(h_base)
         Ty(-2.5)
