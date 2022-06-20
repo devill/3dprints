@@ -9,6 +9,10 @@ r_cavity = r_neck*0.7;
 h_base = 5;
 h_neck = 20;
 
+// v2
+//r_base = r_neck
+//h_neck = 15;
+
 !color("white") {
     D() {
         U() {
