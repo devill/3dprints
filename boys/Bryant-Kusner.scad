@@ -62,7 +62,7 @@ module solid_section(from,to) {
 }
 
 
-model();
+//model();
 
 //translate([cos(-120)*50,sin(-120)*50,12])
 //section(-1,20);
@@ -74,8 +74,10 @@ model();
 //translate([50,0,61.5])
 //section(-61.5,-29);
 
-//strips(0,1);
-//lines(0,1);
+//strips(0.8,1);
+//lines(0.8,1);
+//strips(0.5,0.8);
+//lines(0.5,0.8);
 
 module model() {
     strips(0,1);
