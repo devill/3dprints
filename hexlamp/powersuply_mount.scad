@@ -1,5 +1,5 @@
 use<polygear/shortcuts.scad>
-width = 30;
+width = 20;
 
 for(m = [0:1:1]) {
     mirror([m,0,0]) {
@@ -24,11 +24,11 @@ for(m = [0:1:1]) {
             Ty(8)
             Rx(90){
                 
-                cylinder(h = 8, r1 = 10, r2 = 10);
+                cylinder(h = 8, r1 = 5, r2 = 5, $fn=100);
                 Tz(-4)
-                cylinder(h = 4, r1 = 5, r2 = 10);
+                cylinder(h = 4, r1 = 2.5, r2 = 5, $fn=100);
                 Tz(-8)
-                cylinder(h = 4, r1 = 5, r2 = 5);
+                cylinder(h = 4, r1 = 2.5, r2 = 2.5, $fn=100);
             }
             Tx(8)
             cylinder(h = width, r1 = 8, r2 = 8);
