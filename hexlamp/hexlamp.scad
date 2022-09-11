@@ -123,12 +123,12 @@ module back() {
 
 
 
-
+/*
 I() {
     U() {
-        cube([25,60,50], center=true);
-        Tx(-25)
-        cube([35,60,50], center=true);
+        Tx(0)
+        Ty(-25)
+        cube([8,30,50], center=true);
     }
     U() {
         electronics_mounts();
@@ -140,6 +140,17 @@ I() {
         }
         //back();
     }
+}*/
+
+U() {
+    electronics_mounts();
+    //base();
+    D() {
+        cover();
+        Tz(h_neck+h_base) 
+        cylinder(h=5, r1=3, r2=1, $fn=100);
+    }
+    //back();
 }
 
 module electronics_mounts() {
@@ -193,7 +204,10 @@ module electronics_mounts() {
     Tx(-25) {
         
         Tz(4.5)
-        cube([15,45,3], center=true);
+        D() {
+            cube([15,45,3], center=true);
+            cube([15,35,3], center=true);
+        }
         
         
         D() {
@@ -230,24 +244,6 @@ module electronics_mounts() {
         
     }
     
-    
-    Ty(20)
-    Tz(h_neck+5) {
-        Ty(1.9)
-        Rz(90)
-        peg();
-        
-        Ty(-1.9)
-        Rz(-90)
-        peg();
-    }
-
-    
-    Ty(-2)
-    Ty(20)
-    Tz(h_neck+5)
-    Rz(-90)
-    peg();
 }
 
 module esp_peg() {
