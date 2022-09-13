@@ -7,4 +7,7 @@ D() {
     Tz(2.5)
     Rz(60)
     cube([50,1,11],center=true);
+    Tz(2.5)
+    Rz(30)
+    cube([50,1,11],center=true);
 }
