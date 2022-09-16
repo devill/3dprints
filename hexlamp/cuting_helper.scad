@@ -1,7 +1,7 @@
 use<polygear/shortcuts.scad>
 
 D() {
-    cube([20,100,15],center=true);
+    cube([25,100,15],center=true);
     Tz(2.5)
     cube([15,100,10],center=true);
     Tz(2.5)
